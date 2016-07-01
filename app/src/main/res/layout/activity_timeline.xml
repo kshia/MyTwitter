@@ -15,6 +15,11 @@ android:layout_height="match_parent">
         android:id="@+id/relativeLayout"
         tools:context=".activities.TimelineActivity">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appBar">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:minHeight="?attr/actionBarSize"
@@ -24,10 +29,14 @@ android:layout_height="match_parent">
             android:background="@android:color/background_light">
         </android.support.v7.widget.Toolbar>
 
+    </android.support.design.widget.AppBarLayout>
+
 
         <com.astuetz.PagerSlidingTabStrip
             android:id="@+id/tabs"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/appBar"
+            app:pstsIndicatorColor="@color/buttonBlue"
+            android:background="@android:color/white"
             app:pstsShouldExpand="true"
             app:pstsTextAllCaps="true"
             android:layout_width="match_parent"
@@ -46,9 +55,11 @@ android:layout_height="match_parent">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
+        app:backgroundTint="@color/buttonBlue"
         android:layout_margin="16dp"
         android:id="@+id/fab"
-        android:src="@drawable/ic_compose"
+        android:tint="@color/white"
+        android:src="@drawable/compose_svg"
         app:layout_anchor="@id/relativeLayout"
         app:layout_anchorGravity="bottom|right|end" />
 

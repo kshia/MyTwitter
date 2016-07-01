@@ -6,14 +6,57 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/gradient"
     tools:context=".activities.LoginActivity" >
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/twittericon"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/twitterwhite"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Twitter."
+        android:id="@+id/welcome"
+        android:layout_above="@+id/getreal"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/btnLogIn"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/getreal"
+        android:text="Get real-time updates about what matters to you."
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:textColor="@color/buttonBlue"
+        android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:onClick="loginToRest"
-        android:text="@string/login_label" />
+        android:textStyle="bold"
+        android:id="@+id/btnLogIn"
+        android:textAllCaps="false"
+        android:text="Log in" />
 
 </RelativeLayout>

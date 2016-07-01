@@ -17,6 +17,7 @@ import com.codepath.apps.MyTwitter.models.User;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.util.Collection;
 import java.util.List;
@@ -46,8 +47,12 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         TextView tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
         TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
         ImageView ivMedia = (ImageView) convertView.findViewById(R.id.ivMedia);
+        TextView tvRelTime = (TextView) convertView.findViewById(R.id.tvRelTime);
+        TextView tvScreenName = (TextView) convertView.findViewById(R.id.tvScreenName);
 
-        tvUserName.setText(tweet.getUser().getName() + " @" + tweet.getUser().getScreenName() + " " + tweet.getRelTimeStamp());
+        tvUserName.setText(tweet.getUser().getName());
+        tvScreenName.setText(" @" + tweet.getUser().getScreenName());
+        tvRelTime.setText(tweet.getRelTimeStamp());
         tvBody.setText(tweet.getBody());
         ivProfileImage.setImageResource(android.R.color.transparent);
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl())

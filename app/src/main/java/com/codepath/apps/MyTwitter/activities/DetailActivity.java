@@ -84,11 +84,11 @@ public class DetailActivity extends AppCompatActivity {
         tvTimeStamp.setText(tweet.getTimeStamp());
         tvName.setText(user.getName());
         tvScreenName.setText("@" + user.getScreenName());
-        tvRetweetCount.setText(tweet.getRetweetCount() + " Retweets");
-        tvLikesCount.setText(tweet.getLikeCount() + " Likes");
+        tvRetweetCount.setText(tweet.getRetweetCount() + " ");
+        tvLikesCount.setText(tweet.getLikeCount() + " ");
 
         Picasso.with(this).load(user.getProfileImageUrl())
-                .transform(new RoundedCornersTransformation(3, 3))
+                .transform(new RoundedCornersTransformation(20, 20))
                 .into(ivProfileImage);
 
         ivMedia.setImageResource(0);

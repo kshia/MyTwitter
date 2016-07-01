@@ -53,6 +53,10 @@ public class ProfileActivity extends AppCompatActivity implements ComposeFragmen
 
         client = TwitterApplication.getRestClient();
 
+
+        String screenName = getIntent().getStringExtra("screen_name");
+        getSupportActionBar().setTitle("@" + screenName);
+
         if (userParcel == null) {
             showProgressBar();
             client.getUserInfo(new JsonHttpResponseHandler() {
@@ -70,7 +74,6 @@ public class ProfileActivity extends AppCompatActivity implements ComposeFragmen
             populateProfileHeader(user);
         }
 
-        String screenName = getIntent().getStringExtra("screen_name");
 
         if (savedInstanceState == null) {
             userTimelineFragment = UserTimelineFragment.newInstance(screenName);
@@ -106,13 +109,14 @@ public class ProfileActivity extends AppCompatActivity implements ComposeFragmen
         TextView tvFollowers = (TextView) findViewById(R.id.tvFollowers);
         TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
         ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+
         tvName.setText(user.getName());
         tvTagLine.setText(user.getTagLine());
-        tvFollowers.setText(user.getFollowerCount() + " Followers");
-        tvFollowing.setText(user.getFollowingCount() + " Following");
+        tvFollowers.setText("" + user.getFollowerCount());
+        tvFollowing.setText("" + user.getFollowingCount());
 
         Picasso.with(this).load(user.getProfileImageUrl())
-                .transform(new RoundedCornersTransformation(3, 3))
+                .transform(new RoundedCornersTransformation(20, 20))
                 .into(ivProfileImage);
     }
 
