@@ -46,6 +46,7 @@ dependencies {
 
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'org.parceler:parceler-api:1.1.1'
+    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
     apt 'org.parceler:parceler:1.1.1'
 
     compile "com.android.support:design:23.4.0"

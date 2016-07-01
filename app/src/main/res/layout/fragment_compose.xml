@@ -23,8 +23,9 @@
             android:layout_centerVertical="true"
             android:gravity="top"
             android:inputType="textMultiLine" />
-            <!-- Don't put hint in XML or it's very weird. Set hint programmatically-->
             <!--android:hint="What's Happening?" />-->
+            <!-- Don't put hint in XML or it's very weird. Set hint programmatically-->
+
     </android.support.design.widget.TextInputLayout>
 
     <!--<TextView-->

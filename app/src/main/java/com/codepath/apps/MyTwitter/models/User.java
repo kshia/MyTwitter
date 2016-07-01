@@ -37,6 +37,14 @@ public class User {
         return followingCount;
     }
 
+//    public long getLikeCount() {
+//        return likeCount;
+//    }
+//
+//    public long getRetweetCount() {
+//        return retweetCount;
+//    }
+
     public String name;
     public long uid;
     public String screenName;
@@ -44,6 +52,8 @@ public class User {
     public String tagLine;
     public int followerCount;
     public int followingCount;
+//    public long likeCount;
+//    public long retweetCount;
 
     public User() {
 
@@ -60,6 +70,8 @@ public class User {
             u.tagLine = jsonObject.getString("description");
             u.followerCount = jsonObject.getInt("followers_count");
             u.followingCount = jsonObject.getInt("friends_count");
+//            u.likeCount = jsonObject.getLong("favourites_count");
+//            u.retweetCount = jsonObject.getLong("retweet_count");
         }
         catch (JSONException e) {
             e.printStackTrace();

@@ -8,4 +8,11 @@
         android:orderInCategory="0"
         app:showAsAction="always"
         app:actionLayout="@layout/action_view_progress" />
+    <item
+        android:id="@+id/miCompose"
+        android:icon="@drawable/ic_compose"
+        app:showAsAction="ifRoom"
+        android:onClick="onCompose"
+        android:title="Compose">
+    </item>
 </menu>

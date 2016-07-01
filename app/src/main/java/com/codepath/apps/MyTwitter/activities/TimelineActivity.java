@@ -10,6 +10,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -38,6 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.scribe.builder.api.TwitterApi;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +89,31 @@ public class TimelineActivity extends AppCompatActivity implements ComposeFragme
         miActionProgressItem = menu.findItem(R.id.miActionProgress);
         // Extract the action-view from the menu item
         ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // perform query here
+
+                Toast.makeText(TimelineActivity.this, "searched: " + query, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+                i.putExtra("query", query);
+                startActivity(i);
+                // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
+                // see https://code.google.com/p/android/issues/detail?id=24599
+                searchView.clearFocus();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         return true;
     }
 

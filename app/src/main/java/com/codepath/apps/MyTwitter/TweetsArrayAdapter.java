@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.codepath.apps.MyTwitter.activities.DetailActivity;
 import com.codepath.apps.MyTwitter.activities.ProfileActivity;
 import com.codepath.apps.MyTwitter.models.Tweet;
 import com.codepath.apps.MyTwitter.models.User;
@@ -16,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -28,7 +31,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final Tweet tweet = getItem(position);
 
         // TODO: Use ViewHolder pattern
@@ -40,6 +43,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         ImageView ivProfileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
         TextView tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
         TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
+        ImageView ivMedia = (ImageView) convertView.findViewById(R.id.ivMedia);
 
         tvUserName.setText(tweet.getUser().getName() + " @" + tweet.getUser().getScreenName() + " " + tweet.getRelTimeStamp());
         tvBody.setText(tweet.getBody());
@@ -55,6 +59,26 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
             }
         });
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getContext(), "display activity" + position, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(), DetailActivity.class);
+                i.putExtra("user", Parcels.wrap(tweet.getUser()));
+                i.putExtra("tweet", Parcels.wrap(tweet));
+                getContext().startActivity(i);
+            }
+        });
+
+        ivMedia.setImageResource(0);
+        Picasso.with(getContext()).cancelRequest(ivMedia);
+
+        if (tweet.getMediaUrl() != null) {
+            Picasso.with(getContext()).load(tweet.getMediaUrl()).into(ivMedia);
+        }
+
         return convertView;
     }
+
 }

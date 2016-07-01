@@ -83,9 +83,7 @@ public class ProfileActivity extends AppCompatActivity implements ComposeFragmen
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fm = getSupportFragmentManager();
-                ComposeFragment composeFragment = ComposeFragment.newInstance("Post a Tweet");
-                composeFragment.show(fm, "fragment_edit_name");
+                openComposeFragment();
             }
         });
 
@@ -141,5 +139,15 @@ public class ProfileActivity extends AppCompatActivity implements ComposeFragmen
         });
         hideProgressBar();
 
+    }
+
+    public void onCompose(MenuItem item) {
+        openComposeFragment();
+    }
+
+    public void openComposeFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        ComposeFragment composeFragment = ComposeFragment.newInstance("Post a Tweet");
+        composeFragment.show(fm, "fragment_edit_name");
     }
 }

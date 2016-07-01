@@ -21,13 +21,36 @@
         android:layout_toRightOf="@+id/ivProfileImage"
         android:layout_toEndOf="@+id/ivProfileImage" />
 
-    <TextView
+    <com.codepath.apps.MyTwitter.LinkifiedTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/tvBody"
         android:layout_below="@+id/tvUserName"
+        android:autoLink="all"
+        android:linksClickable="true"
         android:layout_toRightOf="@+id/ivProfileImage"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        android:layout_alignBottom="@+id/ivProfileImage" />
+        android:layout_toEndOf="@+id/ivProfileImage" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:id="@+id/ivMedia"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignLeft="@+id/tvBody"
+        android:layout_alignStart="@+id/tvBody" />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="New Text"-->
+        <!--android:id="@+id/tvBody"-->
+        <!--android:layout_below="@+id/tvUserName"-->
+        <!--android:autoLink="all"-->
+        <!--android:linksClickable="true"-->
+        <!--android:layout_toRightOf="@+id/ivProfileImage"-->
+        <!--android:layout_toEndOf="@+id/ivProfileImage"-->
+        <!--android:layout_alignBottom="@+id/ivProfileImage" />-->
 </RelativeLayout>
