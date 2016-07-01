@@ -167,7 +167,7 @@ public class TimelineActivity extends AppCompatActivity implements ComposeFragme
     @Override
     public void onPostTweet(String tweetText) {
         showProgressBar();
-        Toast.makeText(TimelineActivity.this, "Tweet: " + tweetText, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(TimelineActivity.this, "Tweet: " + tweetText, Toast.LENGTH_SHORT).show();
         client.postTweet(tweetText, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

@@ -72,7 +72,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getContext(), "display activity" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "display activity" + position, Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getContext(), DetailActivity.class);
                 i.putExtra("user", Parcels.wrap(tweet.getUser()));
                 i.putExtra("tweet", Parcels.wrap(tweet));
