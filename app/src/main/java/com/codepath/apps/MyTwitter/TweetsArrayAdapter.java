@@ -21,6 +21,8 @@ import org.parceler.Parcels;
 import java.util.Collection;
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 /**
  * Created by kshia on 6/27/16.
  */
@@ -48,15 +50,17 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         tvUserName.setText(tweet.getUser().getName() + " @" + tweet.getUser().getScreenName() + " " + tweet.getRelTimeStamp());
         tvBody.setText(tweet.getBody());
         ivProfileImage.setImageResource(android.R.color.transparent);
-        Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(ivProfileImage);
+        Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl())
+                .transform(new RoundedCornersTransformation(20, 20))
+                .into(ivProfileImage);
         ivProfileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), ProfileActivity.class);
-                i.putExtra("user", Parcels.wrap(tweet.getUser()));
-                i.putExtra("screen_name", tweet.getUser().getScreenName());     // Allow for Async loading of timeline
-                getContext().startActivity(i);
-            }
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getContext(), ProfileActivity.class);
+                    i.putExtra("user", Parcels.wrap(tweet.getUser()));
+                    i.putExtra("screen_name", tweet.getUser().getScreenName());     // Allow for Async loading of timeline
+                    getContext().startActivity(i);
+                }
         });
 
         convertView.setOnClickListener(new View.OnClickListener() {

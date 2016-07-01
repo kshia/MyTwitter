@@ -66,7 +66,7 @@ public class User {
             u.name = jsonObject.getString("name");
             u.uid = jsonObject.getLong("id");
             u.screenName = jsonObject.getString("screen_name");
-            u.profileImageUrl = jsonObject.getString("profile_image_url");
+            u.profileImageUrl = jsonObject.getString("profile_image_url").replaceAll("_normal", "");
             u.tagLine = jsonObject.getString("description");
             u.followerCount = jsonObject.getInt("followers_count");
             u.followingCount = jsonObject.getInt("friends_count");

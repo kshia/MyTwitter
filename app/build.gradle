@@ -49,5 +49,7 @@ dependencies {
     compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
     apt 'org.parceler:parceler:1.1.1'
 
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
+
     compile "com.android.support:design:23.4.0"
 }

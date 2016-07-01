@@ -32,6 +32,7 @@ import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class ProfileActivity extends AppCompatActivity implements ComposeFragment.PostTweetListener{
 
@@ -110,7 +111,9 @@ public class ProfileActivity extends AppCompatActivity implements ComposeFragmen
         tvFollowers.setText(user.getFollowerCount() + " Followers");
         tvFollowing.setText(user.getFollowingCount() + " Following");
 
-        Picasso.with(this).load(user.getProfileImageUrl()).into(ivProfileImage);
+        Picasso.with(this).load(user.getProfileImageUrl())
+                .transform(new RoundedCornersTransformation(3, 3))
+                .into(ivProfileImage);
     }
 
     public void showProgressBar() {

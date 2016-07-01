@@ -32,6 +32,7 @@ import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -75,6 +76,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvLikesCount = (TextView) findViewById(R.id.tvLikesCount);
         TextView tvTweetBody = (TextView) findViewById(R.id.tvTweetBody);
         ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+        ImageView ivMedia = (ImageView) findViewById(R.id.ivMedia);
 
         //Toast.makeText(DetailActivity.this, user.getScreenName(), Toast.LENGTH_SHORT).show();
 
@@ -85,7 +87,16 @@ public class DetailActivity extends AppCompatActivity {
         tvRetweetCount.setText(tweet.getRetweetCount() + " Retweets");
         tvLikesCount.setText(tweet.getLikeCount() + " Likes");
 
-        Picasso.with(this).load(user.getProfileImageUrl()).into(ivProfileImage);
+        Picasso.with(this).load(user.getProfileImageUrl())
+                .transform(new RoundedCornersTransformation(3, 3))
+                .into(ivProfileImage);
+
+        ivMedia.setImageResource(0);
+        Picasso.with(this).cancelRequest(ivMedia);
+
+        if (tweet.getMediaUrl() != null) {
+            Picasso.with(this).load(tweet.getMediaUrl()).into(ivMedia);
+        }
     }
 
 }
